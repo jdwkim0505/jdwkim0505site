@@ -137,6 +137,17 @@
   .links a:hover { border-color: var(--orange); color: var(--orange); }
 
   footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1.5rem; border-top: 1px solid var(--line); padding-top: 0.9rem; }
+
+  .moto-teaser { margin: -1rem 0 0; }
+  .moto-teaser a {
+    font: 600 0.95rem/1 var(--display);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .moto-teaser a:hover { color: var(--orange); }
+  .moto-photo { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); margin-bottom: 1rem; }
 </style>
 </head>
 <body>
@@ -156,7 +167,7 @@
       <h2 id="about">About</h2>
       <span class="readout">01 / Profile</span>
     </div>
-    <p>I'm a current student at Dartmouth College majoring in engineering and minoring in international studies. Right now, I'm focused on building at Suho Industries, a defense startup I co-founded with my little brother. My biggest dream is to change how future wars are fought. In my free time, I ride my motorcycle.</p>
+    <p>I'm a current student at Dartmouth College majoring in engineering and minoring in international studies. Right now, I'm focused on building at Suho Industries, a defense startup I co-founded with my little brother. My biggest dream is to change how future wars are fought. In my free time, I ride <a href="#motorcycle">my motorcycle</a>.</p>
   </section>
 
   <section class="panel" aria-labelledby="projects">
@@ -204,9 +215,36 @@
     </ul>
   </section>
 
+  <p class="moto-teaser" id="moto-teaser"><a href="#motorcycle">See my motorcycle...</a></p>
+
+  <section class="panel" id="motorcycle" aria-labelledby="moto-title" hidden>
+    <div class="panel-head">
+      <h2 id="moto-title">My Motorcycle</h2>
+      <span class="readout">04 / Ride</span>
+    </div>
+    <img class="moto-photo" src="motorcycle.jpg" alt="Black and red Kawasaki Ninja parked by a river at sunset" width="1200" height="1140">
+    <p>Write a few lines about your bike here.</p>
+  </section>
+
   <footer class="readout">
     <span>© Jason Kim</span>
   </footer>
 </main>
+<script>
+  // Reveal the motorcycle section when any link to it is clicked
+  (function () {
+    var section = document.getElementById('motorcycle');
+    var teaser = document.getElementById('moto-teaser');
+    function show(scroll) {
+      section.hidden = false;
+      teaser.hidden = true;
+      if (scroll) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    document.querySelectorAll('a[href="#motorcycle"]').forEach(function (a) {
+      a.addEventListener('click', function (e) { e.preventDefault(); show(true); });
+    });
+    if (location.hash === '#motorcycle') show(true);
+  })();
+</script>
 </body>
 </html>
