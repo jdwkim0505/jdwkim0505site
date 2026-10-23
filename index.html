@@ -143,10 +143,12 @@
     font: 600 0.95rem/1 var(--display);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink);
     text-decoration: none;
   }
-  .moto-teaser a:hover { color: var(--orange); }
+  .moto-link { color: var(--orange); animation: glow 2.2s ease-in-out infinite; }
+  .moto-link:hover { color: var(--orange); animation-play-state: paused; }
+  @keyframes glow { 50% { opacity: 0.35; } }
+  @media (prefers-reduced-motion: reduce) { .moto-link { animation: none; } }
   .moto-photo { display: block; width: 100%; max-width: 100%; height: auto; border: 1px solid var(--line); margin-bottom: 1rem; }
 </style>
 </head>
@@ -167,7 +169,7 @@
       <h2 id="about">About</h2>
       <span class="readout">01 / Profile</span>
     </div>
-    <p>I'm a current student at Dartmouth College majoring in engineering and minoring in international studies. Right now, I'm focused on building at Suho Industries, a defense startup I co-founded with my little brother. My biggest dream is to change how future wars are fought. In my free time, I ride <a href="#motorcycle">my motorcycle</a>.</p>
+    <p>I'm a current student at Dartmouth College majoring in engineering and minoring in international studies. Right now, I'm focused on building at Suho Industries, a defense startup I co-founded with my little brother. My biggest dream is to change how future wars are fought. In my free time, I ride my <a class="moto-link" href="#motorcycle">motorcycle</a>.</p>
   </section>
 
   <section class="panel" aria-labelledby="projects">
@@ -215,7 +217,7 @@
     </ul>
   </section>
 
-  <p class="moto-teaser" id="moto-teaser"><a href="#motorcycle">See my motorcycle...</a></p>
+  <p class="moto-teaser" id="moto-teaser"><a class="moto-link" href="#motorcycle">See my motorcycle...</a></p>
 
   <section class="panel" id="motorcycle" aria-labelledby="moto-title" hidden>
     <div class="panel-head">
